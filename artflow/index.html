@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtFlow - Мистецька школа</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div id="toast-container"></div>
+
+<!-- HEADER -->
+<nav class="header">
+  <div class="container">
+    <div class="logo" onclick="navigateTo('home')">
+      <div class="logo-icon"><i class="fas fa-music"></i></div>
+      <span class="logo-text">ArtFlow</span>
+    </div>
+    <div class="nav-desktop">
+      <button class="nav-item" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i>Про школу</button>
+      <button class="nav-item" data-page="promotions" onclick="navigateTo('promotions')"><i class="fas fa-tag"></i>Акції</button>
+      <button class="nav-item dashboard-nav" data-page="dashboard" onclick="navigateTo('dashboard')" style="display:none"><i class="fas fa-user"></i>Кабінет</button>
+      <button class="btn-login" onclick="navigateTo('auth')"><i class="fas fa-sign-in-alt"></i>Увійти</button>
+      <button class="btn-logout" onclick="logout()" style="display:none"><i class="fas fa-sign-out-alt"></i>Вийти</button>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+  <div class="nav-mobile" id="mobileMenu">
+    <button class="nav-item-mobile" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i>Про школу</button>
+    <button class="nav-item-mobile" data-page="promotions" onclick="navigateTo('promotions')"><i class="fas fa-tag"></i>Акції</button>
+    <button class="nav-item-mobile dashboard-nav" data-page="dashboard" onclick="navigateTo('dashboard')" style="display:none"><i class="fas fa-user"></i>Кабінет</button>
+    <button class="btn-login-mobile" onclick="navigateTo('auth')"><i class="fas fa-sign-in-alt"></i>Увійти</button>
+    <button class="btn-logout-mobile" onclick="logout()" style="display:none"><i class="fas fa-sign-out-alt"></i>Вийти</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HOME PAGE -->
+<div id="homePage" class="page active">
+  <section class="hero">
+    <img src="photo_2026-03-30_15-37-57.jpg" alt="Music School" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title">Відкрий свій талант у світі мистецтва</h1>
+      <p class="hero-subtitle">Ми поєднуємо класичну освіту з сучасними підходами. Навчаємо дітей та дорослих музиці та живопису.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="bookTrial()">Записатися на пробний урок</button>
+        <button class="btn-secondary" onclick="navigateTo('about')">Дізнатися більше</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2 class="section-title">Про нашу школу</h2>
+          <p class="about-text">Ми віримо, що мистецтво — це мова, якою може навчитися говорити кожен. Наша школа — це простір для самовираження, де професійні викладачі допомагають знайти свій стиль та вдосконалити техніку.</p>
+          <div class="about-features">
+            <div class="feature-item"><i class="fas fa-check-circle"></i><span>Понад 500 успішних випускників</span></div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i><span>Індивідуальний підхід до кожного учня</span></div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i><span>Сучасне обладнання та інструменти</span></div>
+            <div class="feature-item"><i class="fas fa-check-circle"></i><span>Регулярні виставки та концерти</span></div>
+          </div>
+        </div>
+        <div class="about-images">
+          <img src="https://images.unsplash.com/photo-1615502732093-495f92575863?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" alt="Art Class" class="about-img">
+          <img src="https://images.unsplash.com/photo-1599534512267-7f5999a8b579?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" alt="Violin" class="about-img about-img-offset">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title text-center">Напрямки навчання</h2>
+      <div class="directions-grid">
+        <div class="direction-card">
+          <div class="direction-icon music-icon"><i class="fas fa-music"></i></div>
+          <h3 class="direction-title">Музика</h3>
+          <ul class="direction-list">
+            <li>Гітара</li><li>Бандура</li><li>Скрипка</li>
+            <li>Піаніно</li><li>Барабани</li><li>Сольфеджіо</li>
+          </ul>
+        </div>
+        <div class="direction-card">
+          <div class="direction-icon art-icon"><i class="fas fa-palette"></i></div>
+          <h3 class="direction-title">Образотворче мистецтво</h3>
+          <ul class="direction-list">
+            <li>Живопис</li><li>Масло</li><li>Портрет</li><li>Скульптура</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Наші викладачі</h2>
+      <p class="section-subtitle">Натисніть на картку викладача, щоб дізнатися більше</p>
+      <div class="teachers-grid" id="teachersGrid"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-content">
+          <h2 class="contact-title">Маєте питання?</h2>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div><p class="contact-label">Телефон</p><p class="contact-value">+38 (099) 123-45-67</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fab fa-telegram"></i></div>
+              <div><p class="contact-label">Telegram</p><a href="https://t.me/ArtFlowSchoolBot" class="contact-value contact-link">@ArtFlowSchoolBot</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 class="form-title">Залишити заявку</h3>
+          <input type="text" id="contactName" placeholder="Ваше ім'я" class="form-input">
+          <input type="tel" id="contactPhone" placeholder="Номер телефону" class="form-input">
+          <button class="btn-submit" onclick="submitContact()">Надіслати</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PROMOTIONS PAGE -->
+<div id="promotionsPage" class="page">
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">Акції та спеціальні пропозиції</h1>
+      <div class="promotions-grid" id="promotionsGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- AUTH PAGE -->
+<div id="authPage" class="page">
+  <section class="section">
+    <div class="container auth-container">
+      <div class="auth-card">
+        <h2 class="auth-title" id="authTitle">Вхід до системи</h2>
+
+        <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+          <input type="email" id="loginEmail" placeholder="Email" class="form-input" required>
+          <input type="password" id="loginPassword" placeholder="Пароль" class="form-input" required>
+          <button type="submit" class="btn-primary btn-full"><i class="fas fa-sign-in-alt"></i>Увійти</button>
+          <p class="auth-switch">Ще не маєте акаунту?
+            <button type="button" class="auth-link" onclick="switchAuth('register')">Реєстрація</button>
+          </p>
+        </form>
+
+        <form id="registerForm" class="auth-form" style="display:none" onsubmit="handleRegister(event)">
+          <input type="text" id="regName" placeholder="Ім'я та прізвище" class="form-input" required>
+          <input type="email" id="regEmail" placeholder="Email" class="form-input" required>
+          <input type="password" id="regPassword" placeholder="Пароль (мін. 6 символів)" class="form-input" required minlength="6">
+          <label class="input-label">Дата народження</label>
+          <input type="date" id="regBirth" class="form-input" required onchange="checkAge()">
+          <div id="parentBlock" class="parent-block" style="display:none">
+            <h4><i class="fas fa-exclamation-triangle"></i> Для неповнолітніх вкажіть дані батьків</h4>
+            <input type="text" id="parentName" placeholder="ПІБ одного з батьків" class="form-input">
+            <input type="tel" id="parentPhone" placeholder="Телефон батьків" class="form-input" style="margin-top:.75rem">
+          </div>
+          <button type="submit" class="btn-primary btn-full"><i class="fas fa-user-plus"></i>Зареєструватися</button>
+          <p class="auth-switch">Вже маєте акаунт?
+            <button type="button" class="auth-link" onclick="switchAuth('login')">Увійти</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div id="dashboardPage" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="dashboard-layout">
+        <div class="dashboard-sidebar">
+          <button class="sidebar-item active" data-tab="overview" onclick="switchTab('overview')"><i class="fas fa-wallet"></i>Огляд</button>
+          <button class="sidebar-item" data-tab="schedule" onclick="switchTab('schedule')"><i class="fas fa-calendar"></i>Розклад</button>
+          <button class="sidebar-item" data-tab="teachers" onclick="switchTab('teachers')"><i class="fas fa-users"></i>Викладачі</button>
+          <button class="sidebar-item" data-tab="grades" onclick="switchTab('grades')"><i class="fas fa-graduation-cap"></i>Оцінки</button>
+          <button class="sidebar-item" data-tab="history" onclick="switchTab('history')"><i class="fas fa-history"></i>Історія</button>
+          <button class="sidebar-item" data-tab="payments" onclick="switchTab('payments')"><i class="fas fa-credit-card"></i>Платежі</button>
+        </div>
+        <div class="dashboard-content">
+
+          <div id="overviewTab" class="dash-tab active">
+            <div class="balance-card">
+              <div class="balance-header">
+                <div><p class="balance-label">Ваш поточний баланс</p><h3 class="balance-amount" id="balanceAmount">0 грн</h3></div>
+                <div class="balance-icon"><i class="fas fa-wallet"></i></div>
+              </div>
+              <div class="balance-actions">
+                <button class="btn-balance" onclick="openModal('paymentModal')"><i class="fas fa-plus"></i>Поповнити</button>
+                <button class="btn-balance-secondary" onclick="openModal('bookingModal')"><i class="fas fa-calendar-plus"></i>Записатися на урок</button>
+              </div>
+            </div>
+            <h3 class="tab-subtitle">Найближчі уроки</h3>
+            <div id="upcomingLessons"></div>
+          </div>
+
+          <div id="scheduleTab" class="dash-tab">
+            <h2 class="tab-title">Мій розклад</h2>
+            <div id="fullSchedule"></div>
+          </div>
+
+          <div id="teachersTab" class="dash-tab">
+            <h2 class="tab-title">Мої викладачі</h2>
+            <div id="myTeachers"></div>
+          </div>
+
+          <div id="gradesTab" class="dash-tab">
+            <h2 class="tab-title">Мої оцінки</h2>
+            <div id="gradesList"></div>
+          </div>
+
+          <div id="historyTab" class="dash-tab">
+            <h2 class="tab-title">Історія уроків</h2>
+            <div id="historyList"></div>
+          </div>
+
+          <div id="paymentsTab" class="dash-tab">
+            <h2 class="tab-title">Історія платежів</h2>
+            <div id="paymentsList"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRIVACY PAGE -->
+<div id="privacyPage" class="page">
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">Політика конфіденційності</h1>
+      <div class="privacy-content">
+        <p>Ця Політика конфіденційності описує, як ArtFlow збирає, використовує та захищає особисті дані користувачів.</p>
+        <h2>1. Яку інформацію ми збираємо</h2>
+        <ul><li>Ім'я та прізвище</li><li>Адреса електронної пошти</li><li>Дата народження</li><li>Контактний телефон</li><li>Дані про записи та платежі</li></ul>
+        <h2>2. Як ми використовуємо інформацію</h2>
+        <p>Дані використовуються для надання освітніх послуг, обробки платежів, надсилання сповіщень та покращення якості сервісу.</p>
+        <h2>3. Захист даних</h2>
+        <p>Всі паролі зберігаються у хешованому вигляді (bcrypt). Дані передаються через захищене з'єднання HTTPS.</p>
+        <h2>4. Права користувача</h2>
+        <p>Ви маєте право на доступ, виправлення або видалення своїх персональних даних. Зверніться до адміністратора.</p>
+        <h2>5. Контакти</h2>
+        <p>Телефон: +38 (099) 123-45-67 | Telegram: @artflow_bot</p>
+        <p class="privacy-date">Дата оновлення: 29 березня 2026 р.</p>
+        <button class="btn-primary" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i>На головну</button>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- ABOUT PAGE - НОВА СТОРІНКА -->
+<div id="aboutPage" class="page">
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">Про ArtFlow</h1>
+      
+      <!-- Опис школи -->
+      <div class="about-full">
+        <div class="about-text-full">
+          <h2>Хто ми?</h2>
+          <p>ArtFlow — це мистецька школа, де кожен знаходить свій шлях у світі творчості. Ми навчаємо як початківців, так і досвідчених ентузіастів. Наші заняття поєднують класичні методики з сучасними підходами.</p>
+          
+          <div class="about-stats">
+            <div class="stat-item">
+              <h3>500+</h3>
+              <p>випускників</p>
+            </div>
+            <div class="stat-item">
+              <h3>15</h3>
+              <p>років досвіду</p>
+            </div>
+            <div class="stat-item">
+              <h3>12</h3>
+              <p>напрямків</p>
+            </div>
+          </div>
+
+          <h2>Наші принципи</h2>
+          <div class="principles-grid">
+            <div class="principle-card">
+              <i class="fas fa-heart"></i>
+              <h4>Індивідуальний підхід</h4>
+              <p>Кожен учень має унікальний план навчання</p>
+            </div>
+            <div class="principle-card">
+              <i class="fas fa-chart-line"></i>
+              <h4>Гарантія прогресу</h4>
+              <p>Ви побачите результат вже через 3 місяці</p>
+            </div>
+            <div class="principle-card">
+              <i class="fas fa-users"></i>
+              <h4>Досвідчені викладачі</h4>
+              <p>Лауреати конкурсів та професійні художники</p>
+            </div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1579586140626-5984b4e95a37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Клас ArtFlow" class="about-hero-img">
+      </div>
+
+      <!-- Приклади робіт студентів -->
+      <h2 class="section-title">Роботи наших студентів</h2>
+      <div class="student-works-grid" id="studentWorks">
+        <!-- Динамічно заповнюється JS -->
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-music"></i></div>
+        <span class="logo-text" style="color:#fff">ArtFlow</span>
+      </div>
+      <div class="footer-links">
+        <button onclick="navigateTo('home')">Головна</button>
+        <button onclick="navigateTo('promotions')">Акції</button>
+        <button onclick="navigateTo('privacy')">Конфіденційність</button>
+      </div>
+      <p class="footer-copy">© 2026 ArtFlow. Всі права захищені.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TEACHER MODAL -->
+<div id="teacherModal" class="modal">
+  <div class="modal-overlay" onclick="closeModal('teacherModal')"></div>
+  <div class="modal-content teacher-modal">
+    <button class="modal-close" onclick="closeModal('teacherModal')"><i class="fas fa-times"></i></button>
+    <div id="teacherModalContent" class="teacher-modal-grid"></div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div id="paymentModal" class="modal">
+  <div class="modal-overlay" onclick="closeModal('paymentModal')"></div>
+  <div class="modal-content payment-modal">
+    <button class="modal-close" onclick="closeModal('paymentModal')"><i class="fas fa-times"></i></button>
+    <h2 class="modal-title">Поповнення балансу</h2>
+    <form onsubmit="handlePayment(event)" class="modal-form">
+      <div class="quick-amounts">
+        <button type="button" class="btn-amount" onclick="setAmount(500)">500 грн</button>
+        <button type="button" class="btn-amount" onclick="setAmount(1000)">1000 грн</button>
+        <button type="button" class="btn-amount" onclick="setAmount(2000)">2000 грн</button>
+      </div>
+      <input type="number" id="payAmount" placeholder="Або введіть суму (грн)" class="form-input" required min="50">
+      <input type="text" id="cardNumber" placeholder="Номер картки" class="form-input" required maxlength="19" oninput="fmtCard(this)">
+      <div class="form-row">
+        <input type="text" placeholder="MM/YY" class="form-input" required maxlength="5">
+        <input type="password" placeholder="CVV" class="form-input" required maxlength="3">
+      </div>
+      <button type="submit" class="btn-primary btn-full"><i class="fas fa-lock"></i>Поповнити</button>
+    </form>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div id="bookingModal" class="modal">
+  <div class="modal-overlay" onclick="closeModal('bookingModal')"></div>
+  <div class="modal-content payment-modal">
+    <button class="modal-close" onclick="closeModal('bookingModal')"><i class="fas fa-times"></i></button>
+    <h2 class="modal-title">Запис на урок</h2>
+    <form onsubmit="handleBooking(event)" class="modal-form">
+      <select id="bookSubject" class="form-input" required>
+        <option value="">Оберіть напрям</option>
+        <option value="Гітара">Гітара</option>
+        <option value="Піаніно">Піаніно</option>
+        <option value="Скрипка">Скрипка</option>
+        <option value="Бандура">Бандура</option>
+        <option value="Барабани">Барабани</option>
+        <option value="Живопис">Живопис</option>
+        <option value="Скульптура">Скульптура</option>
+      </select>
+      <select id="bookTeacher" class="form-input" required>
+        <option value="">Оберіть викладача</option>
+        <option value="1">Олександр Петренко (Гітара)</option>
+        <option value="2">Марія Ковальчук (Фортепіано)</option>
+        <option value="3">Іван Сидоренко (Живопис)</option>
+      </select>
+      <input type="date" id="bookDate" class="form-input" required>
+      <input type="time" id="bookTime" class="form-input" required>
+      <button type="submit" class="btn-primary btn-full"><i class="fas fa-calendar-check"></i>Записатися</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────────
+
+const API = 'http://localhost:3000/api';
+
+// ── LOCAL DATA ──────────────────────────────────────────────────────
+const TEACHERS = [
+  { id:'1', name:'Олександр Петренко', role:'Гітара',
+    img:'https://images.unsplash.com/photo-1584554376766-ac0f2c65e949?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    bio:'Професійний гітарист з 12-річним досвідом викладання. Поєднує класичну техніку та сучасні ритми.',
+    education:'Національна музична академія України ім. П.І. Чайковського',
+    experience:'12 років', specialties:['Акустична гітара','Електрогітара','Класична гітара'] },
+  { id:'2', name:'Марія Ковальчук', role:'Фортепіано',
+    img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    bio:'Лауреат міжнародних конкурсів. Спеціалізується на класичному репертуарі та джазі.',
+    education:'Київська муніципальна академія музики ім. Р.М. Глієра',
+    experience:'8 років', specialties:['Фортепіано','Сольфеджіо','Теорія музики'] },
+  { id:'3', name:'Іван Сидоренко', role:'Живопис',
+    img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    bio:'Художник-експресіоніст, чиї роботи виставлялися у галереях всієї країни.',
+    education:'Національна академія образотворчого мистецтва і архітектури',
+    experience:'15 років', specialties:['Живопис маслом','Акварель','Скульптура'] }
+];
+
+const PROMOTIONS = [
+  { id:1, title:'50% знижка на перший місяць', discount:'50%', validUntil:'до 31.06.2026',
+    img:'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    description:'Спеціальна пропозиція для нових учнів! Почніть свій шлях у мистецтві з вигодою.',
+    details:'Знижка 50% на перший місяць навчання за будь-яким напрямком. Акція не поєднується з іншими знижками. Для активації зверніться до адміністратора після реєстрації.' },
+  { id:2, title:'Безкоштовний пробний урок', discount:'100%', validUntil:'до 15.07.2026',
+    img:'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    description:'Спробуйте будь-який напрямок навчання абсолютно безкоштовно!',
+    details:'Кожен новий учень може отримати один безкоштовний пробний урок тривалістю 45 хвилин. Запишіться через особистий кабінет або зателефонуйте нам.' },
+  { id:3, title:'Сімейна знижка 30%', discount:'30%', validUntil:'постійна акція',
+    img:'https://images.unsplash.com/photo-1511379938547-c1f69419868d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    description:'При навчанні двох та більше членів родини отримайте знижку на всі уроки.',
+    details:'Знижка 30% надається при одночасному записі двох або більше членів однієї родини на будь-які напрямки навчання.' },
+  { id:4, title:'Пакет "Інтенсив"', discount:'20%', validUntil:'до 30.09.2026',
+    img:'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600',
+    description:'10 занять за ціною 8! Ідеально для швидкого прогресу.',
+    details:'Придбайте пакет із 10 уроків та отримайте 2 безкоштовно. Пакет діє 3 місяці з дня активації для будь-якого напрямку навчання.' }
+];
+
+// ── STATE ────────────────────────────────────────────────────────────
+let currentPage = 'home';
+let isLoggedIn = false;
+let currentUser = null;
+let token = null;
+
+// ── INIT ─────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('af_token');
+  const user  = localStorage.getItem('af_user');
+  if(saved && user) { token = saved; currentUser = JSON.parse(user); isLoggedIn = true; updateAuthUI(); }
+  renderTeachers();
+  renderPromotions();
+  const today = new Date().toISOString().split('T')[0];
+  const bd = document.getElementById('bookDate');
+  if(bd) bd.min = today;
+});
+
+// ── API HELPER ────────────────────────────────────────────────────────
+async function api(method, path, body) {
+  const opts = { method, headers: { 'Content-Type':'application/json' } };
+  if(token) opts.headers['Authorization'] = 'Bearer ' + token;
+  if(body)  opts.body = JSON.stringify(body);
+  try {
+    const r = await fetch(API + path, opts);
+    return await r.json();
+  } catch(e) {
+    // Fallback to localStorage if no backend
+    return { error: 'no_backend' };
+  }
+}
+
+// ── AUTH ──────────────────────────────────────────────────────────────
+async function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+
+  const res = await api('POST', '/auth/login', { email, password });
+
+  if(res.error === 'no_backend') {
+    // Fallback: localStorage mode
+    const users = JSON.parse(localStorage.getItem('af_users') || '[]');
+    const u = users.find(x => x.email === email && x.password === btoa(password));
+    if(!u) { showToast('Невірний email або пароль', 'error'); return; }
+    currentUser = u; token = 'local_' + Date.now(); isLoggedIn = true;
+  } else if(res.token) {
+    token = res.token; currentUser = res.user; isLoggedIn = true;
+  } else {
+    showToast(res.message || 'Помилка входу', 'error'); return;
+  }
+
+  localStorage.setItem('af_token', token);
+  localStorage.setItem('af_user', JSON.stringify(currentUser));
+  updateAuthUI();
+  navigateTo('dashboard');
+  showToast('Вітаємо, ' + currentUser.name + '!', 'success');
+  document.getElementById('loginForm').reset();
+}
+
+async function handleRegister(e) {
+  e.preventDefault();
+  const name     = document.getElementById('regName').value.trim();
+  const email    = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const birth    = document.getElementById('regBirth').value;
+
+  if(password.length < 6) { showToast('Пароль мінімум 6 символів', 'error'); return; }
+
+  const age = calcAge(birth);
+  let parentData = null;
+  if(age < 18) {
+    const pn = document.getElementById('parentName').value.trim();
+    const pp = document.getElementById('parentPhone').value.trim();
+    if(!pn || !pp) { showToast('Вкажіть дані батьків', 'error'); return; }
+    parentData = { parentName: pn, parentPhone: pp };
+  }
+
+  const payload = { name, email, password, birthDate: birth, age, parentData };
+  const res = await api('POST', '/auth/register', payload);
+
+  if(res.error === 'no_backend') {
+    const users = JSON.parse(localStorage.getItem('af_users') || '[]');
+    if(users.find(x => x.email === email)) { showToast('Email вже зареєстровано', 'error'); return; }
+    const nu = { id: Date.now(), name, email, password: btoa(password), birthDate: birth, age, parentData, balance: 0 };
+    users.push(nu); localStorage.setItem('af_users', JSON.stringify(users));
+    currentUser = nu; token = 'local_' + Date.now(); isLoggedIn = true;
+  } else if(res.token) {
+    token = res.token; currentUser = res.user; isLoggedIn = true;
+  } else {
+    showToast(res.message || 'Помилка реєстрації', 'error'); return;
+  }
+
+  localStorage.setItem('af_token', token);
+  localStorage.setItem('af_user', JSON.stringify(currentUser));
+  updateAuthUI();
+  navigateTo('dashboard');
+  showToast('Реєстрація успішна!', 'success');
+  document.getElementById('registerForm').reset();
+  document.getElementById('parentBlock').style.display = 'none';
+}
+
+function logout() {
+  localStorage.removeItem('af_token');
+  localStorage.removeItem('af_user');
+  token = null; currentUser = null; isLoggedIn = false;
+  updateAuthUI();
+  navigateTo('home');
+  showToast('Ви вийшли з акаунту', 'info');
+}
+
+function calcAge(b) {
+  const t = new Date(), bd = new Date(b);
+  let a = t.getFullYear() - bd.getFullYear();
+  if(t.getMonth() < bd.getMonth() || (t.getMonth() === bd.getMonth() && t.getDate() < bd.getDate())) a--;
+  return a;
+}
+
+function checkAge() {
+  const b = document.getElementById('regBirth').value;
+  if(!b) return;
+  document.getElementById('parentBlock').style.display = calcAge(b) < 18 ? 'block' : 'none';
+}
+
+function switchAuth(mode) {
+  const isReg = mode === 'register';
+  document.getElementById('loginForm').style.display    = isReg ? 'none' : 'flex';
+  document.getElementById('registerForm').style.display = isReg ? 'flex' : 'none';
+  document.getElementById('authTitle').textContent      = isReg ? 'Реєстрація' : 'Вхід до системи';
+}
+
+function updateAuthUI() {
+  document.querySelectorAll('.btn-login,.btn-login-mobile').forEach(b => b.style.display = isLoggedIn ? 'none' : 'flex');
+  document.querySelectorAll('.btn-logout,.btn-logout-mobile').forEach(b => b.style.display = isLoggedIn ? 'flex' : 'none');
+  document.querySelectorAll('.dashboard-nav').forEach(b => b.style.display = isLoggedIn ? 'flex' : 'none');
+  if(isLoggedIn) loadDashboard();
+}
+
+// ── DASHBOARD ─────────────────────────────────────────────────────────
+async function loadDashboard() {
+  if(!currentUser) return;
+  document.getElementById('balanceAmount').textContent = (currentUser.balance || 0) + ' грн';
+
+  // Load from API or fallback to localStorage
+  const sched   = await api('GET', '/user/schedule');
+  const grades  = await api('GET', '/user/grades');
+  const hist    = await api('GET', '/user/history');
+  const pays    = await api('GET', '/user/payments');
+
+  const schedule     = sched.data  || JSON.parse(localStorage.getItem('af_schedule_'+(currentUser.id||'')) || '[]');
+  const gradesData   = grades.data || JSON.parse(localStorage.getItem('af_grades_'+(currentUser.id||''))  || defaultGrades());
+  const histData     = hist.data   || JSON.parse(localStorage.getItem('af_history_'+(currentUser.id||'')) || '[]');
+  const paysData     = pays.data   || JSON.parse(localStorage.getItem('af_pays_'+(currentUser.id||''))    || '[]');
+
+  const schedHTML = schedule.length
+    ? schedule.map(s => `<div class="list-item"><div class="item-info"><h4>${s.subject}</h4><p>${s.teacher_name||s.teacher||''}</p><p>${s.lesson_date||s.date} ${s.lesson_time||s.time||''}</p></div><span class="item-status status-upcoming">Заплановано</span></div>`).join('')
+    : empty('Немає запланованих уроків');
+
+  document.getElementById('upcomingLessons').innerHTML = schedHTML;
+  document.getElementById('fullSchedule').innerHTML    = schedHTML;
+
+  document.getElementById('myTeachers').innerHTML = TEACHERS.map(t =>
+    `<div class="list-item"><div class="item-info"><h4>${t.name}</h4><p>${t.role}</p></div>
+     <button class="btn-primary" style="padding:.65rem 1.25rem;border-radius:.5rem;font-size:.875rem" onclick="openTeacher('${t.id}')">Детальніше</button></div>`
+  ).join('');
+
+  document.getElementById('gradesList').innerHTML = gradesData.length
+    ? gradesData.map(g => { const ok = g.status==='Склав'||g.status==='Здав';
+        return `<div class="list-item"><div class="item-info"><h4>${g.subject}</h4><p>${g.task}</p><p>${g.date}</p></div><span class="item-status ${ok?'status-passed':'status-failed'}">${g.status}</span></div>`; }).join('')
+    : empty('Немає оцінок');
+
+  document.getElementById('historyList').innerHTML = histData.length
+    ? histData.map(h => `<div class="list-item"><div class="item-info"><h4>${h.subject}</h4><p>${h.date}</p></div><span class="item-status status-completed">${h.status||'Завершено'}</span></div>`).join('')
+    : empty('Немає завершених уроків');
+
+  document.getElementById('paymentsList').innerHTML = paysData.length
+    ? paysData.map(p => `
+      <div class="list-item">
+        <div class="item-info">
+          <h4>${p.type_ua || p.type || p.description}</h4>
+          <p>${p.date || p.created_at}</p>
+        </div>
+        <span class="${p.amount > 0 ? 'pay-pos' : 'pay-neg'}">
+          ${p.amount > 0 ? '+' : ''}${p.amount.toFixed(0)} грн
+        </span>
+      </div>
+    `).join('')
+    : empty('Немає операцій');
+}
+
+function defaultGrades() {
+  return JSON.stringify([
+    { subject:'Скрипка', task:'Гамма Соль-мажор', status:'Склав', date:'10.02.2024' },
+    { subject:'Живопис', task:'Натюрморт з яблуком', status:'Здав', date:'08.02.2024' },
+    { subject:'Муз. теорія', task:'Тест по Баху', status:'Не здав', date:'05.02.2024' }
+  ]);
+}
+
+function empty(msg) { return `<div class="empty-state"><i class="fas fa-inbox"></i><p>${msg}</p></div>`; }
+
+function switchTab(tab) {
+  document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.toggle('active', i.dataset.tab === tab));
+  document.getElementById(tab+'Tab').classList.add('active');
+}
+
+// ── ACTIONS ───────────────────────────────────────────────────────────
+async function handlePayment(e) {
+  e.preventDefault();
+  const amount = parseInt(document.getElementById('payAmount').value);
+  if(!amount || amount < 50) { showToast('Мінімум 50 грн', 'error'); return; }
+
+  const res = await api('POST', '/payments/topup', { amount });
+  const today = new Date().toLocaleDateString('uk-UA');
+
+  if(res.error === 'no_backend') {
+    // Fallback
+    currentUser.balance = (currentUser.balance || 0) + amount;
+    const key = 'af_pays_' + (currentUser.id || '');
+    const pays = JSON.parse(localStorage.getItem(key) || '[]');
+    pays.unshift({ type:'Поповнення балансу', amount, date: today });
+    localStorage.setItem(key, JSON.stringify(pays));
+    localStorage.setItem('af_user', JSON.stringify(currentUser));
+  } else if(!res.error) {
+    currentUser.balance = res.newBalance;
+    localStorage.setItem('af_user', JSON.stringify(currentUser));
+  } else {
+    showToast('Помилка поповнення', 'error'); return;
+  }
+
+  document.getElementById('balanceAmount').textContent = currentUser.balance + ' грн';
+  loadDashboard();
+  showToast(`Баланс поповнено на ${amount} грн`, 'success');
+  closeModal('paymentModal');
+  e.target.reset();
+}
+
+async function handleBooking(e) {
+  e.preventDefault();
+  const subject   = document.getElementById('bookSubject').value;
+  const teacherId = document.getElementById('bookTeacher').value;
+  const date      = document.getElementById('bookDate').value;
+  const time      = document.getElementById('bookTime').value;
+
+  const res = await api('POST', '/bookings', { subject, teacherId, date, time });
+
+  if(res.error === 'no_backend') {
+    const teacher = TEACHERS.find(t => t.id === teacherId);
+    const key = 'af_schedule_' + (currentUser.id || '');
+    const sched = JSON.parse(localStorage.getItem(key) || '[]');
+    sched.push({ subject, teacher: teacher?.name || '', date, time });
+    localStorage.setItem(key, JSON.stringify(sched));
+  } else if(res.error) {
+    showToast('Помилка запису', 'error'); return;
+  }
+
+  loadDashboard();
+  switchTab('schedule');
+  showToast('Урок успішно заброньовано!', 'success');
+  closeModal('bookingModal');
+  e.target.reset();
+}
+
+async function submitContact() {
+  const name  = document.getElementById('contactName').value.trim();
+  const phone = document.getElementById('contactPhone').value.trim();
+  if(!name || !phone) { showToast('Заповніть ім\'я та телефон', 'error'); return; }
+  await api('POST', '/contacts', { name, phone });
+  document.getElementById('contactName').value = '';
+  document.getElementById('contactPhone').value = '';
+  showToast('Заявку надіслано! Ми зателефонуємо.', 'success');
+}
+
+function bookTrial() { isLoggedIn ? openModal('bookingModal') : navigateTo('auth'); }
+
+// ── RENDER ────────────────────────────────────────────────────────────
+function renderTeachers() {
+  document.getElementById('teachersGrid').innerHTML = TEACHERS.map(t =>
+    `<div class="teacher-card" onclick="openTeacher('${t.id}')">
+      <div class="teacher-img-wrapper"><img src="${t.img}" alt="${t.name}" class="teacher-img"></div>
+      <div class="teacher-info"><h4 class="teacher-name">${t.name}</h4><p class="teacher-role">${t.role}</p></div>
+    </div>`).join('');
+}
+
+function renderPromotions() {
+  document.getElementById('promotionsGrid').innerHTML = PROMOTIONS.map(p =>
+    `<div class="promotion-card">
+      <img src="${p.img}" alt="${p.title}" class="promotion-img">
+      <div class="promotion-content">
+        <span class="promotion-badge">Знижка ${p.discount}</span>
+        <h3 class="promotion-title">${p.title}</h3>
+        <p class="promotion-desc">${p.description}</p>
+        <div class="promotion-extra" id="pe${p.id}">${p.details}</div>
+        <div class="promotion-footer">
+          <span class="promotion-date">${p.validUntil}</span>
+          <button class="promotion-btn" onclick="togglePromo(${p.id},this)">Дізнатися більше</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function togglePromo(id, btn) {
+  const el = document.getElementById('pe'+id);
+  const v = el.classList.toggle('visible');
+  btn.textContent = v ? 'Згорнути' : 'Дізнатися більше';
+}
+
+function openTeacher(id) {
+  const t = TEACHERS.find(x => x.id === id);
+  if(!t) return;
+  document.getElementById('teacherModalContent').innerHTML = `
+    <div><img src="${t.img}" alt="${t.name}" class="teacher-modal-img"></div>
+    <div>
+      <h2 class="teacher-modal-name">${t.name}</h2>
+      <p class="teacher-modal-role">${t.role}</p>
+      <div class="detail-item"><div class="detail-icon edu"><i class="fas fa-graduation-cap"></i></div>
+        <div><h4>Освіта</h4><p>${t.education}</p></div></div>
+      <div class="detail-item"><div class="detail-icon exp"><i class="fas fa-briefcase"></i></div>
+        <div><h4>Досвід</h4><p>${t.experience}</p></div></div>
+      <p style="margin:1rem 0;color:#6B7280;line-height:1.7">${t.bio}</p>
+      <div class="spec-tags">${t.specialties.map(s=>`<span class="spec-tag">${s}</span>`).join('')}</div>
+      <button class="btn-primary btn-full" style="margin-top:1.5rem" onclick="closeModal('teacherModal');bookTrial()">
+        <i class="fas fa-calendar-plus"></i>Записатися
+      </button>
+    </div>`;
+  openModal('teacherModal');
+}
+
+// ── MODALS ─────────────────────────────────────────────────────────────
+function openModal(id)  { document.getElementById(id).classList.add('active'); }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+// ── NAV ────────────────────────────────────────────────────────────────
+function navigateTo(page) {
+  currentPage = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById(page + 'Page');
+  if(el) el.classList.add('active');
+  document.querySelectorAll('.nav-item,.nav-item-mobile').forEach(i => i.classList.toggle('active', i.dataset.page === page));
+  closeMobileMenu();
+  window.scrollTo(0,0);
+}
+
+function toggleMobileMenu() {
+  const m = document.getElementById('mobileMenu');
+  const i = document.querySelector('.mobile-menu-btn i');
+  m.classList.toggle('active');
+  i.className = m.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('active');
+  const i = document.querySelector('.mobile-menu-btn i');
+  if(i) i.className = 'fas fa-bars';
+}
+
+// ── UTILS ──────────────────────────────────────────────────────────────
+function setAmount(n) { document.getElementById('payAmount').value = n; }
+function fmtCard(el) { let v = el.value.replace(/\D/g,'').substring(0,16); el.value = v.replace(/(.{4})/g,'$1 ').trim(); }
+
+function showToast(msg, type='info') {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
+  t.innerHTML = `<i class="fas ${icons[type]} toast-icon"></i><span>${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(() => { t.style.animation = 'slideIn .3s ease reverse'; setTimeout(() => t.remove(), 300); }, 3500);
+}
+
+// ── ABOUT PAGE ──────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  renderStudentWorks();
+});
+
+// Дані студентських робіт
+const STUDENT_WORKS = [
+  { 
+    img: 'https://images.unsplash.com/photo-1579526488145-7cf0b86ef223?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+    name: 'Іван', 
+    age: '47 років', 
+    duration: '4 місяці навчання', 
+    technique: 'Малюнок олією' 
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+    name: 'Олена', 
+    age: '29 років', 
+    duration: '6 тижнів навчання', 
+    technique: 'Акварель' 
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+    name: 'Михайло', 
+    age: '12 років', 
+    duration: '3 місяці навчання', 
+    technique: 'Портрет вугіллям' 
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1544968045-8f6f386d258a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+    name: 'Софія', 
+    age: '35 років', 
+    duration: '2 місяці навчання', 
+    technique: 'Пейзаж аквареллю' 
+  }
+];
+
+// Рендер робіт студентів
+function renderStudentWorks() {
+  const container = document.getElementById('studentWorks');
+  if(container) {
+    container.innerHTML = STUDENT_WORKS.map(work =>
+      `<div class="student-work">
+        <img src="${work.img}" alt="${work.name}" class="student-work-img">
+        <div class="student-work-info">
+          <h3 class="student-work-name">${work.name}</h3>
+          <p class="student-work-details">${work.technique}</p>
+          <p class="student-work-details">${work.age}, ${work.duration}</p>
+        </div>
+      </div>`
+    ).join('');
+  }
+}
+</script>
+</body>
+</html>
